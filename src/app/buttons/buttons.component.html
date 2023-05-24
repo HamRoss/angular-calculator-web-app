@@ -1,0 +1,4 @@
+<p>{{ display }}</p>
+<ng-container *ngFor="let number of numbersList">
+  <button (click)="addNumberToDisplay(number)">{{ number }}</button>
+</ng-container>
