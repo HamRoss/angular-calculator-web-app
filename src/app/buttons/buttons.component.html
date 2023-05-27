@@ -1,4 +1,10 @@
-<p>{{ display }}</p>
+<p>{{ sum ? sum : display }}</p>
 <ng-container *ngFor="let number of numbersList">
   <button (click)="addNumberToDisplay(number)">{{ number }}</button>
+</ng-container>
+<ng-container *ngFor="let operator of operatorsList">
+  <button (click)="addOperatorToDisplay(operator)">{{ operator }}</button>
+</ng-container>
+<ng-container>
+  <button (click)="calculateSum()">=</button>
 </ng-container>

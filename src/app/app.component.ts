@@ -20,4 +20,6 @@ export class AppComponent {
     '9',
     '0',
   ];
+
+  buttonOperatorsList: string[] = ['+', '-', '*', '/'];
 }
