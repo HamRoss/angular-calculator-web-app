@@ -26,6 +26,17 @@ export class ButtonsComponent {
 
   calculateSum() {
     let sumPartStrings = this.display.split(' ');
+    this.performCalculation(sumPartStrings);
+    if (sumPartStrings.length > 0) {
+      if (this.sum !== undefined) {
+        sumPartStrings.unshift(this.sum);
+      }
+      this.performCalculation(sumPartStrings);
+    }
+    this.display = '0';
+  }
+
+  performCalculation(sumPartStrings: string[]) {
     const num1 = sumPartStrings[0];
     const operator = sumPartStrings[1];
     const num2 = sumPartStrings[2];
@@ -39,6 +50,8 @@ export class ButtonsComponent {
     } else if (operator === '/') {
       this.sum = String(+num1 / +num2);
     }
-    this.display = '0';
+    sumPartStrings.shift();
+    sumPartStrings.shift();
+    sumPartStrings.shift();
   }
 }
