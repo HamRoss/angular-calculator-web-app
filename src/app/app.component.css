@@ -1,0 +1,21 @@
+header {
+  margin-bottom: 50px;
+  font-weight: bold;
+  font-size: 16pt;
+  border-bottom: solid 0.5px #050e2e;
+  color: #050e2e;
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+  text-align: center;
+}
+
+app-buttons {
+  max-width: 500px;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

@@ -9,10 +9,11 @@ export class ButtonsComponent {
   @Input() numbersList: string[] = [];
   @Input() operatorsList: string[] = [];
   display: string = '0';
+  numberSum: number = 0;
   sum: string | undefined = undefined;
 
   addNumberToDisplay(number: string) {
-    this.sum = undefined;
+    this.numberSum = 0;
     if (this.display === '0') {
       this.display = number;
     } else {
@@ -27,12 +28,7 @@ export class ButtonsComponent {
   calculateSum() {
     let sumPartStrings = this.display.split(' ');
     this.performCalculation(sumPartStrings);
-    if (sumPartStrings.length > 0) {
-      if (this.sum !== undefined) {
-        sumPartStrings.unshift(this.sum);
-      }
-      this.performCalculation(sumPartStrings);
-    }
+
     this.display = '0';
   }
 
@@ -42,16 +38,24 @@ export class ButtonsComponent {
     const num2 = sumPartStrings[2];
 
     if (operator === '+') {
-      this.sum = String(+num1 + +num2);
+      this.numberSum = +num1 + +num2;
     } else if (operator === '-') {
-      this.sum = String(+num1 - +num2);
+      this.numberSum = +num1 - +num2;
     } else if (operator === '*') {
-      this.sum = String(+num1 * +num2);
+      this.numberSum = +num1 * +num2;
     } else if (operator === '/') {
-      this.sum = String(+num1 / +num2);
+      this.numberSum = +num1 / +num2;
     }
     sumPartStrings.shift();
     sumPartStrings.shift();
     sumPartStrings.shift();
+    this.sum = String(this.numberSum);
+
+    if (sumPartStrings.length > 0) {
+      if (this.sum !== undefined) {
+        sumPartStrings.unshift(this.sum);
+        this.performCalculation(sumPartStrings);
+      }
+    }
   }
 }
